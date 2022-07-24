@@ -96,9 +96,106 @@ header
 .todo-list
   display: flex
   flex-direction: column
+  gap: 25px
   align-items: center
   padding: $default-padding
   background-color: purple
+
+  .todo-header
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-around
+
+  h2
+    font-weight: $fw-bold
+    font-size: 4rem
+
+  p
+    font-size: 1.5rem
+
+  .todo-body
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: left
+    gap: 15px
+    border: 2px solid black
+
+    .tasks
+      display: flex
+      flex-direction: column
+      gap: 15px
+
+      .task
+        position: relative
+        padding: $default-padding
+        display: flex
+        gap: 15px
+        align-items: center
+
+        font-size: 2rem
+
+        input[type="checkbox"]
+          /* Add if not using autoprefixer */
+          -webkit-appearance: none
+          /* Remove most all native input styles */
+          appearance: none
+          /* For iOS < 15 */
+          background-color: white
+          /* Not removed via appearance */
+          margin: 0
+
+          font: inherit
+          color: currentColor
+          width: 1.15em
+          height: 1.15em
+          border: 0.15em solid currentColor
+          border-radius: 0.15em
+
+          display: grid
+          place-content: center
+
+        input[type="checkbox"]::before
+          content: ""
+          width: 0.65em
+          height: 0.65em
+          clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%)
+          transform: scale(0)
+          transform-origin: bottom left
+          transition: 120ms transform ease-in-out
+          box-shadow: inset 1em 1em purple
+          /* Windows High Contrast Mode */
+          background-color: CanvasText
+
+        input[type="checkbox"]:checked::before
+          transform: scale(1)
+
+        label
+          display: inline-flex
+          align-items: center
+          position: relative
+
+        label::after
+          content: ""
+          position: absolute
+          left: 0
+          right: 0
+          left: 0em
+          top: 50%
+          height: 3px
+          background: currentColor
+          transform: scaleX(0)
+          transform-origin: right
+          transition: transform 150ms ease-in-out
+
+        [type="checkbox"]:checked + label
+          opacity: 0.5
+
+        [type="checkbox"]:checked + label::after
+          transform: scaleX(1)
+          transform-origin: left
 
 button:hover
   cursor: pointer
