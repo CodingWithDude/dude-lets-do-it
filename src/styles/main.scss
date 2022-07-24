@@ -1,0 +1,17 @@
+.button-open-nav {
+  display: none;
+  width: 40px;
+  padding: 0;
+  font-size: 40px;
+}
+
+@media (max-width: 650px) {
+  .button-open-nav {
+    display: block;
+  }
+
+  .nav {
+    width: 100%;
+    display: none;
+  }
+}
