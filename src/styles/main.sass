@@ -1,31 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap')
+
+// Variables
+
+// Fonts
+$ff-primary: 'Poppins', sans-serif
+
+// Font Weights
+$fw-light: 300
+$fw-regular: 400
+$fw-medium: 500
+$fw-semibold: 600
+$fw-bold: 700
+
+// Padding
+$default-padding: 15px 30px
+
+html
+  font-family: $ff-primary
+  height: 100vh
+
+body
+  height: 100%
+  display: grid
+  grid-template-columns: 375px auto
+  grid-template-rows: 100px auto
+
 header
+  grid-column: 1 / span 2
   display: flex
   flex-direction: row
   justify-content: space-between
   align-items: center
-  padding: 10px
+  padding: $default-padding
+  background: lightgrey
 
   h1
+    font-size: 3rem
+    font-weight: $fw-bold
+
+.button-open-nav
+  display: none
+  width: 40px
+  padding: 0
+  font-size: 40px
+  background: none
+  border: none
+
+.all-tasks
+  display: flex
+  flex-direction: column
+  gap: 25px
+  padding: $default-padding
+  background-color: lightblue
+
+  h2
+
+    font-weight: $fw-bold
+    font-size: 2.5rem
+    padding-top: 15px
+
+  ul
+    display: flex
+    flex-direction: column
+    gap: 15px
     font-size: 2rem
+    padding-left: 25px
+    word-wrap: wrap
+
+  ul:hover
+    cursor: pointer
+
+  form
+    display: flex
+    gap: 5px
+
+  input
+    border-radius: 10px
+    border: 3px solid transparent
+    text-indent: 5px
+    font-size: 1.5rem
+    width: 250px
+
+  input:hover
+    border: 3px solid black
+
+  input:focus
+    outline: none
+    border: 3px solid black
 
   button
-    display: none
-    width: 40px
-    padding: 0
-    font-size: 40px
-    background: none
+    background-color: transparent
     border: none
+    font-size: 2rem
+
+.todo-list
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: $default-padding
+  background-color: purple
 
 button:hover
   cursor: pointer
 
 .active-list
-  font-weight: 700
+  font-weight: $fw-semibold
 
-@media (max-width: 650px)
+.task-template-container
+  display: none
+
+@media (max-width: 796px)
+  body
+    display: flex
+    flex-direction: column
+
   .button-open-nav
     display: block
 
-  .nav
+  .all-tasks
     width: 100%
     display: none
+
+  .todo-list
+    height: 100%
