@@ -13,12 +13,9 @@
   <body>
     <header>
       <h1><i class="fa-solid fa-check-double"></i> Do It Dude!</h1>
-      <button id="button-open-nav" class="button-open-nav">
-        <i class="fas fa-bars" aria-hidden="true"></i>
-      </button>
     </header>
 
-    <div class="all-tasks">
+    <div id="all-tasks" class="all-tasks">
       <h2 class="task-list-title">My Projects</h2>
       <ul class="task-list" data-lists></ul>
 
@@ -35,35 +32,36 @@
     </div>
 
     <div class="todo-list" data-list-display-container>
-      <div class="todo-header">
-        <h2 class="list-title" data-list-title>Youtube</h2>
-        <p class="task-count" data-list-count>3 tasks remaining</p>
-      </div>
-
+      <div class="todo-header"></div>
+      <h2 class="list-title" data-list-title>YouTube</h2>
+      <p class="task-count" data-list-count>3 tasks remaining</p>
       <div class="todo-body">
+        <div class="task-management-container">
+          <div class="new-task-creator">
+            <form action="" data-new-task-form>
+              <input
+                type="text"
+                data-new-task-input
+                class="new task"
+                placeholder="new task name"
+                aria-label="new task name"
+              />
+
+              <button class="btn create" aria-label="create new task">+</button>
+            </form>
+          </div>
+
+          <div class="delete-stuff">
+            <button class="btn delete" data-clear-complete-tasks-button>
+              Clear completed tasks
+            </button>
+
+            <button class="btn delete" data-delete-list-button>
+              Delete list
+            </button>
+          </div>
+        </div>
         <div class="tasks" data-tasks></div>
-
-        <div class="new-task-creator">
-          <form action="" data-new-task-form>
-            <input
-              type="text"
-              data-new-task-input
-              class="new task"
-              placeholder="new task name"
-              aria-label="new task name"
-            />
-            <button class="btn create" aria-label="create new task">+</button>
-          </form>
-        </div>
-
-        <div class="delete-stuff">
-          <button class="btn delete" data-clear-complete-tasks-button>
-            Clear completed tasks
-          </button>
-          <button class="btn delete" data-delete-list-button>
-            Delete list
-          </button>
-        </div>
       </div>
     </div>
 

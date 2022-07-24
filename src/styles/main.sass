@@ -2,6 +2,19 @@
 
 // Variables
 
+// Color Palette
+$bgc-header: #264653
+$c-header: #e9c46a
+
+$bgc-nav: #e2e8f0
+$c-nav: #264653
+
+$bgc-todo-list: #f8fafc
+$c-todo-list: #264653
+
+$bgc-task-management-container: #e2e8f0
+$c-task-management-container: #264653
+
 // Fonts
 $ff-primary: 'Poppins', sans-serif
 
@@ -23,7 +36,7 @@ body
   height: 100%
   display: grid
   grid-template-columns: 375px auto
-  grid-template-rows: 100px auto
+  grid-template-rows: 79px auto
 
 header
   grid-column: 1 / span 2
@@ -32,26 +45,21 @@ header
   justify-content: space-between
   align-items: center
   padding: $default-padding
-  background: lightgrey
+  background: $bgc-header
+  color: $c-header
 
   h1
     font-size: 3rem
     font-weight: $fw-bold
-
-.button-open-nav
-  display: none
-  width: 40px
-  padding: 0
-  font-size: 40px
-  background: none
-  border: none
 
 .all-tasks
   display: flex
   flex-direction: column
   gap: 25px
   padding: $default-padding
-  background-color: lightblue
+  padding-top: 10px
+  background-color: $bgc-nav
+  color: $c-nav
 
   h2
 
@@ -74,19 +82,25 @@ header
     display: flex
     gap: 5px
 
+    button
+      color: $c-nav
+
   input
     border-radius: 10px
-    border: 3px solid transparent
+    outline: 3px solid transparent
+    border: none
     text-indent: 5px
     font-size: 1.5rem
     width: 250px
+    height: 40px
 
   input:hover
-    border: 3px solid black
+    outline: 3px solid $c-nav
+    border: none
 
   input:focus
-    outline: none
-    border: 3px solid black
+    outline: 3px solid $c-nav
+    border: none
 
   button
     background-color: transparent
@@ -98,8 +112,8 @@ header
   flex-direction: column
   gap: 25px
   align-items: center
-  padding: $default-padding
-  background-color: purple
+  background-color: $bgc-todo-list
+  color: $c-todo-list
 
   .todo-header
     width: 100%
@@ -121,16 +135,17 @@ header
     flex-direction: column
     align-items: left
     gap: 15px
-    border: 2px solid black
+    padding: 30px
 
     .tasks
+
       display: flex
       flex-direction: column
       gap: 15px
 
       .task
         position: relative
-        padding: $default-padding
+        width: fit-content
         display: flex
         gap: 15px
         align-items: center
@@ -197,6 +212,57 @@ header
           transform: scaleX(1)
           transform-origin: left
 
+      .task:hover, input:hover, label:hover
+        cursor: pointer
+
+    .task-management-container
+      padding: 15px 20px
+      margin-bottom: 25px
+      border-radius: 10px
+      display: flex
+      flex-direction: column
+      align-self: center
+      gap: 5px
+      background-color: $bgc-task-management-container
+      color: $c-task-management-container
+
+      .new-task-creator
+        input
+          border-radius: 10px
+          outline: 3px solid transparent
+          border: none
+          text-indent: 5px
+          font-size: 1.5rem
+          width: 270px
+          height: 40px
+
+        input:hover
+          outline: 3px solid black
+          border: none
+
+        input:focus
+          outline: 3px solid black
+          border: none
+
+        button
+          background-color: transparent
+          border: none
+          font-size: 2rem
+
+      .delete-stuff
+
+        padding-left: 20px
+        display: flex
+        gap: 15px
+
+        button
+          color: $c-task-management-container
+          padding: 5px
+          font-size: 1rem
+          background-color: transparent
+          border: none
+          font-weight: $fw-semibold
+
 button:hover
   cursor: pointer
 
@@ -206,17 +272,20 @@ button:hover
 .task-template-container
   display: none
 
-@media (max-width: 796px)
+@media (max-width: 840px)
   body
     display: flex
     flex-direction: column
 
-  .button-open-nav
-    display: block
-
   .all-tasks
+    display: flex
+    align-items: left
     width: 100%
-    display: none
 
   .todo-list
     height: 100%
+
+@media (max-width: 400px)
+  header
+    h1
+      font-size: 2.5rem

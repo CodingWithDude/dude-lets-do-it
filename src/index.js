@@ -1,3 +1,5 @@
+/* eslint-disable object-shorthand */
+/* eslint-disable no-unused-vars */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-undef */
@@ -28,7 +30,7 @@ let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
 
 listsContainer.addEventListener('click', (e) => {
   if (e.target.tagName.toLowerCase() === 'li') {
-    selectedListId = e.target.dataset.listID;
+    selectedListId = e.target.dataset.listId;
     saveAndRender();
   }
 });
@@ -45,13 +47,13 @@ tasksContainer.addEventListener('click', (e) => {
   }
 });
 
-clearCompleteTasksButton.addEventListener('click', () => {
+clearCompleteTasksButton.addEventListener('click', (e) => {
   const selectedList = lists.find((list) => list.id === selectedListId);
   selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
   saveAndRender();
 });
 
-deleteListButton.addEventListener('click', () => {
+deleteListButton.addEventListener('click', (e) => {
   lists = lists.filter((list) => list.id !== selectedListId);
   selectedListId = null;
   saveAndRender();
@@ -79,16 +81,16 @@ newTaskForm.addEventListener('submit', (e) => {
 });
 
 function createList(name) {
-  return { id: Date.now().toString(), name, tasks: [] };
+  return { id: Date.now().toString(), name: name, tasks: [] };
 }
 
 function createTask(name) {
-  return { id: Date.now().toString(), name, complete: false };
+  return { id: Date.now().toString(), name: name, complete: false };
 }
 
 function saveAndRender() {
-  render();
   save();
+  render();
 }
 
 function save() {
@@ -136,7 +138,7 @@ function renderTaskCount(selectedList) {
 function renderLists() {
   lists.forEach((list) => {
     const listElement = document.createElement('li');
-    listElement.dataset.listID = list.id;
+    listElement.dataset.listId = list.id;
     listElement.classList.add('list-name');
     listElement.innerText = list.name;
     if (list.id === selectedListId) {
