@@ -1,14 +1,11 @@
-import "./styles/reset.scss";
-import "./styles/main.scss";
+import "./styles/reset.sass";
+import "./styles/main.sass";
 
 const listsContainer = document.querySelector("[data-lists]");
 const newListForm = document.querySelector("[data-new-list-form]");
 const newListInput = document.querySelector("[data-new-list-input]");
 
-let lists = [
-  { id: 1, name: "name" },
-  { id: 2, name: "todo" },
-];
+let lists = [];
 
 newListForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -16,6 +13,8 @@ newListForm.addEventListener("submit", (e) => {
   if (listName == null || listName === "") return;
   const list = createList(listName);
   newListInput.value = null;
+  lists.push(list);
+  render();
 });
 
 function createList(name) {
